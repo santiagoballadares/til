@@ -1,0 +1,11 @@
+{
+  "name": "readme-workflow",
+  "version": "1.0.0",
+  "description": "Update README file",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "author": "Santiago Balladares",
+  "license": "ISC"
+}
