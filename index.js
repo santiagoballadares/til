@@ -157,6 +157,7 @@ const run = async () => {
   const counterContent = getCounterContent(allEntries);
   const entriesContent = await getEntriesContent(allEntries);
 
+  const entriesFilepath = `${Path.dirname(require.main.filename)}/entries.json`;
   const readmeFilepath = `${Path.dirname(require.main.filename)}/README.md`;
   const readmeContent = await fs.readFile(readmeFilepath, 'utf8');
 
@@ -168,6 +169,7 @@ const run = async () => {
   const entriesEnd = readmeRewritten.indexOf(ENTRIES_END_TAG);
   readmeRewritten = `${readmeRewritten.slice(0, entriesStart)}${entriesContent}${readmeRewritten.slice(entriesEnd + ENTRIES_END_TAG.length + 1)}`;
 
+  fs.writeFile(entriesFilepath, JSON.stringify(allEntries));
   fs.writeFile(readmeFilepath, readmeRewritten);
 };
 
