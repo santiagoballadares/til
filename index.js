@@ -140,9 +140,11 @@ const getEntriesContent = async (allEntries = []) => {
     lines.push(`## ${subject}\n`);
 
     for (const entry of entries) {
-      const { title, url, created } = entry;
-      lines.push(`* [${title}](${url}) - ${created.split('T')[0]}`);
+      const { title = '', url = '', created = '', updated = '' } = entry;
+      const date = created ? created.split('T')[0] : updated.split('T')[0];
+      lines.push(`* [${title}](${url}) - ${date}`);
     }
+    lines.push(`\n`);
   }
 
   lines.push(ENTRIES_END_TAG);
@@ -163,11 +165,11 @@ const run = async () => {
 
   const counterStart = readmeContent.indexOf(COUNTER_START_TAG);
   const counterEnd = readmeContent.indexOf(COUNTER_END_TAG);
-  let readmeRewritten = `${readmeContent.slice(0, counterStart)}${counterContent}${readmeContent.slice(counterEnd + COUNTER_END_TAG.length + 1)}`;
+  let readmeRewritten = `${readmeContent.slice(0, counterStart)}${counterContent}${readmeContent.slice(counterEnd + COUNTER_END_TAG.length)}`;
 
   const entriesStart = readmeRewritten.indexOf(ENTRIES_START_TAG);
   const entriesEnd = readmeRewritten.indexOf(ENTRIES_END_TAG);
-  readmeRewritten = `${readmeRewritten.slice(0, entriesStart)}${entriesContent}${readmeRewritten.slice(entriesEnd + ENTRIES_END_TAG.length + 1)}`;
+  readmeRewritten = `${readmeRewritten.slice(0, entriesStart)}${entriesContent}${readmeRewritten.slice(entriesEnd + ENTRIES_END_TAG.length)}`;
 
   fs.writeFile(entriesFilepath, JSON.stringify(allEntries));
   fs.writeFile(readmeFilepath, readmeRewritten);
