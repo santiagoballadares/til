@@ -1,6 +1,6 @@
 # Today I Learned
 
-Total TILs: <!-- counter start -->5<!-- counter end -->
+Total TILs: <!-- counter start -->6<!-- counter end -->
 
 <!-- entries start -->
 ## node
@@ -14,6 +14,11 @@ Total TILs: <!-- counter start -->5<!-- counter end -->
 
 * [Access nested objects with vanilla JavaScript](https://github.com/santiagoballadares/til/blob/master/javascript/access-nested-objects.md) - 2020-08-04
 * [Automatically update data with JavaScript](https://github.com/santiagoballadares/til/blob/master/javascript/automatically-update-data-with-javascript.md) - 2020-08-20
+
+
+## bash
+
+* [Customize Git Bash](https://github.com/santiagoballadares/til/blob/master/bash/customize-git-bash.md) - 2020-10-22
 
 
 <!-- entries end -->
